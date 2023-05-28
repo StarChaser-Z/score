@@ -1,0 +1,109 @@
+<!--
+ * @Description: 
+ * @Date: 2023-05-28 16:56:56
+ * @Author: zengsiyuan
+ * @LastEditors: zengsiyuan
+ * @LastEditTime: 2023-05-28 17:59:37
+ * @FilePath: \score\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>分数等级转换</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      /* border: 0; */
+    }
+
+    ::-webkit-input-placeholder {
+      color: rgb(197, 197, 197);
+      font-size: 1.2rem;
+      padding-left: 10px;
+    }
+
+    input {
+      color: rgb(29, 28, 28);
+      padding-left: 10px;
+      font-size: 1.2rem;
+      width: 45%;
+    }
+
+    #app {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      background-image: linear-gradient(107.7deg, rgb(101, 168, 143) -30.7%, rgb(144, 220, 193) 7.2%, rgb(225, 203, 150) 31.3%, rgb(251, 166, 150) 82.6%, rgb(250, 54, 65) 128.5%);
+
+    }
+
+    #container {
+      margin: 30% auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div id="container">
+      <div style="margin: 30% auto;color: black;text-align: center;font-size: 2rem;">分数等级转换</div>
+      <div style="text-align: center;;">
+        <span style="font-size: 1.5rem; line-height: 2rem;">请输入分数:</span>
+        <input id="score" style="height: 2rem;vertical-align:top;border: 2px solid slategray;border-radius: 1rem;"
+          type="number" placeholder="请输入分数">
+      </div>
+      <div style="margin:20% auto;font-size: 2rem; text-align: center;">
+        <span>评分是:</span>
+        <span id="grade" style="color: red;">C-</span>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  const score = document.getElementById('score');
+  const grade = document.getElementById('grade');
+  score.addEventListener('input', (e) => {
+    const data = e.target.value;
+    let message = '';
+    switch (true) {
+      case data > 100:
+        message = '错误';
+        break;
+      case data >= 95:
+        message = 'A+';
+        break;
+      case data >= 90:
+        message = 'A';
+        break;
+      case data >= 85:
+        message = 'A-';
+        break;
+      case data >= 80:
+        message = 'B+';
+        break;
+      case data >= 75:
+        message = 'B';
+        break;
+      case data >= 70:
+        message = 'B-';
+        break;
+      case data >= 65:
+        message = 'C+';
+        break;
+      case data >= 60:
+        message = 'C';
+        break;
+      default:
+        message = 'C-';
+        break;
+    }
+    grade.innerHTML = message;
+  })
+</script>
+
+</html>
